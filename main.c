@@ -7,8 +7,8 @@
 #include <time.h>
 #include <locale.h>
 #include "server.h"
-#include "client.h"
-#include "bit.h"
+/*#include "client.h"
+#include "bit.h"*/
 
 int main(int argc, char *argv[]) {
     server_init();
