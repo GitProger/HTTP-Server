@@ -1,6 +1,6 @@
 #ifndef __WIDE_H_INC
 #define __WIDE_H_INC
-typedef unsigned char byte, byteptr, uint8;
+typedef unsigned char byte, *byteptr, uint8;
 typedef char int8;
 typedef unsigned short uint16;
 typedef short int16;
