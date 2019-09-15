@@ -113,7 +113,7 @@ char *__err_page(const char *text, char *resp) {
     return resp;
 }
 
-int parseMetReg(char *method, char *param, char *all_info) {
+int parseMetReq(char *method, char *param, char *all_info) {
     char *inf = malloc(MAX_USER_INFO_LEN); 
     strcpy(inf, all_info);
     char *buffer = strtok(inf, "\r\n");
