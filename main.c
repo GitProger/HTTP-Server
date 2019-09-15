@@ -18,14 +18,14 @@ int main(int argc, char *argv[]) {
         strcpy(port, argv[2]);
     } else if (argc == 2) {
         strcpy(ip, argv[1]);
-        printf("Порт (default=%s): ", port);
+        printf("Port (default=%s): ", port);
         gets_s(buffer, 5);
         sscanf(buffer, "%s", port);
     } else if (argc <= 1) {
-        printf("IP адрес (default=%s): ", ip);
+        printf("IP address (default=%s): ", ip);
         gets_s(buffer, 15);
         sscanf(buffer, "%s", ip);
-        printf("Порт (default=%s): ", port);
+        printf("Port (default=%s): ", port);
         gets_s(buffer, 5);
         sscanf(buffer, "%s", port);
     }
