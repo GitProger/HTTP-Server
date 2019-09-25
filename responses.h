@@ -22,7 +22,7 @@ void MakeHeader(char *resph, const char *ver, const char *status,
 
 
 int CreateResponse(const char *method, char *uri, char *response) {
-    int i;
+    int i, resplen = 0;
     for (i = 0; i < strlen(uri); i++) /* remove '/' in file name beginnig */
         uri[i] = uri[i + 1];
 
@@ -39,11 +39,11 @@ int CreateResponse(const char *method, char *uri, char *response) {
             notFound(response);
             for (i = 0; i < strlen(response) - 3; i++) { /* to clear main content and there will be only header */
                 if (response[i] == '\r' &&
-                    response[i] == '\n' &&
-                    response[i] == '\r' &&
-                    response[i] == '\n'
+                    response[i + 1] == '\n' &&
+                    response[i + 2] == '\r' &&
+                    response[i + 3] == '\n'
                 )
-                    response[i] = 0;
+                    response[i + 4] = 0;
             }
         } else
         MakeHeader(response, HTTP_VERSION, "200 OK", MIME, sz);        
@@ -62,7 +62,7 @@ int CreateResponse(const char *method, char *uri, char *response) {
             readBinFile(uri, buffer, sz);
 
         MakeHeader(response, HTTP_VERSION, "200 OK", MIME, sz);
-        int resplen = strlen(response);
+        resplen = strlen(response);
         for (i = 0; i < sz; i++)
             response[resplen + i] = buffer[i];
         resplen += sz;
@@ -72,7 +72,12 @@ int CreateResponse(const char *method, char *uri, char *response) {
         return resplen;
                    
     } else if (!stricmp(method, "POST")) {
-    } else badRequest(response);
+        MakeHeader(response, HTTP_VERSION, "200 OK", "text/plain", 0);
+        return strlen(response);
+    } else {
+        badRequest(response);
+        return strlen(response);
+    }
 }
             
 #endif
