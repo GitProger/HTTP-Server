@@ -2,7 +2,7 @@
 #define __DEEP_SYS_H_INC
 #define MAX_FILE_NAME_LEN 1024
 #define MAX_USER_INFO_LEN 0x800
-#define SERVER_NAME "Karel"
+#define SERVER_NAME "Server"
 #define SERVION_VERSION "0.0b"
 #define HTTP_VERSION "1.0"
 #define FULL_SERV_NAME SERVER_NAME"/"SERVION_VERSION
