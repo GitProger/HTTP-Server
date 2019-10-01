@@ -1,0 +1,18 @@
+############################################################
+#                                                          #
+#    CCCCCC    OOOOO    NN    N   FFFFFFF   II    GGGGGG   #
+#   CC        OO   OO   N N   N   FF        II   GG        #
+#   CC        OO   OO   N  N  N   FFFFF     II   GG   GG   #
+#   CC        OO   OO   N   N N   FF        II   GG    G   #
+#    CCCCCC    OOOOO    N    NN   FF        II    GGGGGG   #
+#                                                          #
+############################################################
+
+# root              html
+log               logs
+index             index.html
+#server_ip         192.168.67.132
+server_ip         127.0.0.1
+listen_port       80
+heap_mb           32
+# server_name       www.firstsiteonthisserver.com
