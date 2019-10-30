@@ -11,7 +11,6 @@
 # root              html
 log               logs
 index             index.html
-#server_ip         192.168.67.132
 server_ip         127.0.0.1
 listen_port       80
 heap_mb           32
