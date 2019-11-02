@@ -1,4 +1,5 @@
-#HTTP Server
+HTTP Server
+===========
     This server is based on WinApi (WinSocket), it supports HTTP 1.0
 ## Plans
    * CGI
