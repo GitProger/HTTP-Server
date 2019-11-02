@@ -26,8 +26,7 @@
     | pycgi              | path to python interpretor           |        NO        |
     |--------------------|--------------------------------------|------------------|
 
-###C code of the configuration:
-
+### C code of the configuration:
     struct __server_configuration_struct {
         char ip[16];       /* server_ip */
         char port[6];      /* listen_port */
@@ -41,3 +40,6 @@
         bool cgi;          /* cgi */
         char *py;          /* pycgi */
     };
+    
+## References
+    [Project site]("")
