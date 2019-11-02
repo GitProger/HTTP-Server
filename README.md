@@ -5,8 +5,6 @@
    * Python
    * More return HTTP codes
 ## Short manual
-========================== 0.0b(beta) Version User Manual ==========================
-* Config:
     All parameters must have length less than 1024 symbols
     If a parameter is file or dir it must exists.
 
@@ -28,7 +26,7 @@
     | pycgi              | path to python interpretor           |        NO        |
     |--------------------|--------------------------------------|------------------|
 
-C code of the configuration:
+###C code of the configuration:
 
     struct __server_configuration_struct {
         char ip[16];       /* server_ip */
