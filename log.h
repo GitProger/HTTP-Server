@@ -4,24 +4,25 @@
 #include "readconf.h"
 FILE *logFileG, *errFileG;
 
-void updateFile(FILE *f) {
-    
-}
-
 static void LogEvent(const char *text, FILE *log) {
-    char *__M_tm_loc_var = timeStr();
-    fprintf(log, "[%s] %s\n", __M_tm_loc_var, (text));
-    free(__M_tm_loc_var);
+    char *strTime = timeStr();
+    fprintf(log, "[%s] %s\n", strTime, text);
+    fflush(log);
+    free(strTime);
 }
 
-#define LogError(text, err) \
-    {\
-    char *__M_tm_loc_var = timeStr();\
-    fprintf(err, "[%s] %s | line: %d | function: %s | file: %s\n", __M_tm_loc_var, (text), __LINE__,\
-         __PRETTY_FUNCTION__, __FILE__);\
-    free(__M_tm_loc_var);\
+#define LogError(__text, __err_f_nm) \
+    { \
+    char *__M_tm_loc_var = timeStr(); \
+    fprintf(__err_f_nm, \
+         "[%s] %s | line: %d | function: %s | file: %s\n", \
+          __M_tm_loc_var, (__text), __LINE__, \
+          __PRETTY_FUNCTION__, __FILE__); \
+    free(__M_tm_loc_var); \
+    fflush(__err_f_nm); \
     }
-void InitLogsFiles() 
+
+void InitLogsFiles()
 {
     static char name[MAX_FILE_NAME_LEN];
 
