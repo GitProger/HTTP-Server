@@ -21,12 +21,6 @@ static int readBinFile(const char *fName, byte *buffer, int size) { /* bin */
 
 static int readTextFile(const char *fName, char *buffer, int size) { /* text */
     FILE *f = fopen(fName, "rb");
-    /*
-    åñëè "r" à íå "rb" òî
-    êîãäà ôîðìèðóåòñÿ îòâåò ñåðâåðà, òî '\r' íå ñ÷èòàþåòñÿ êàê ñèìâîë, íî
-    îíè âõîäÿò â ðàçìåð ôàéëà, èòîãî, îòïðâëÿåì x áàéò, è èç íèõ n - '\r'
-    òî åñòü ïîñëå òåëà ôàéëà áóäåò åùå n ñëó÷àéíûõ áàéòîâ èç ïàìÿòè 
-    */
     int i;
     if (!f) 
         return 404;
