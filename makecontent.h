@@ -1,6 +1,6 @@
 #ifndef __MAKECONTENT_H_INC
 #define __MAKECONTENT_H_INC
-#include "deepsys.h"
+#include "serversys.h"
 
 int getMIME(const char *uri, char *MIME) {
     char *ext = FileExt(uri);
