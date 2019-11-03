@@ -16,5 +16,16 @@ typedef unsigned long long uint64;
 #ifndef asm
 #define asm __asm__ __volatile__
 #endif
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <conio.h>
+#include <io.h>
+#include <signal.h>
+#include <ctype.h>
+#include <time.h>
+#include <locale.h>
+
 #endif
 
