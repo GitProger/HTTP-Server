@@ -10,6 +10,11 @@ struct __server_configuration_struct {
     char *index;
     char *log;
     char *root;
+    int  heap_sz_mb;
+    bool security;
+    bool filelist;
+    bool cgi;
+    char *py;
 };
 static struct __server_configuration_struct ServerConfig;
 
@@ -24,6 +29,15 @@ static int init_config(struct __server_configuration_struct *s) {
     if (!s->log) return 1;
     s->root = malloc(1024);
     if (!s->root) return 1;
+    s->heap_sz_mb = 32;
+    strcpy(s->name, "");
+    strcpy(s->index, "index.html");
+    strcpy(s->log, ".");
+    strcpy(s->root, ".");
+    s->security = false;
+    s->filelist = false;
+    s->cgi = false;
+    s->py = malloc(MAX_FILE_NAME_LEN);
     return 0;
 }
 
@@ -61,6 +75,11 @@ int ReadConfigFile() {
             strcpy(ServerConfig.port, curOption);
         else if (!stricmp(curSetting, "server_name"))
             strcpy(ServerConfig.name, curOption);
+        else if (!stricmp(curSetting, "heap_mb"))
+            ServerConfig.heap_sz_mb = atoi(curOption);
+        else if (!stricmp(curSetting, "pycgi"))
+            strcpy(ServerConfig.py, curOption);
+        /* TODO: security, sendfilelist, cgi */
     }
     
     fclose(fconf);
