@@ -1,7 +1,6 @@
 #ifndef __NETS_INTEG_H_INC
 #define __NETS_INTEG_H_INC
 
-
 static int startup();
 static int cleanup();
 static int lasterr();
@@ -26,12 +25,29 @@ static int lasterr();
 #else
     #ifdef __linux__
         typedef unsigned char BYTE;
-        #ifndef MAKEWORD
-            #define MAKEWORD(a,b) \
-                (((long)a & 0xFF) << 8) | (long)(b & 0xFF);
-        #endif
-
-        
+        #define MAKEWORD(a,b) \
+            (((long)a & 0xFF) << 8) | (long)(b & 0xFF);
+        #define SOCKET int
+        #define INVALID_SOCKET -1
+        #define SOCKADDR struct sockaddr
+        #define SOCKET_ERROR -1
+        #define closesocket close
+        static int cleanup() {
+            return 0;
+        }
+        static int lasterr() {
+            return (unsigned short)0xFFFF;
+        }
+        static int cleanup() {
+            return 0;
+        }
+        #include <errno.h>
+        #include <sys/types.h>
+        #include <sys/socket.h>
+        #include <strings.h>
+        #include <arpa/inet.h>
+        #include <netdb.h>
+        #include <unistd.h>
     #else
         #error "Sorry, no version for your OS."
     #endif
