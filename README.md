@@ -5,6 +5,7 @@ HTTP Server
    * CGI
    * Python
    * More return HTTP codes
+   * Linux version
 ## Short manual
     All parameters must have length less than 1024 symbols
     If a parameter is file or dir it must exists.
