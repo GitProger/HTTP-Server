@@ -80,4 +80,6 @@ int CreateResponse(const char *method, char *uri, char *response) {
     }
 }
             
+static __this_is_c_repository_for_git() {}
+
 #endif
