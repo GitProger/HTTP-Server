@@ -6,11 +6,10 @@
 #include <ctype.h>
 #include <time.h>
 #include <locale.h>
-#include "readconf.h"
+#include "nets.h"
 #include "server.h"
 
 int main(int argc, char *argv[]) {
-    ReadConfigFile();
     server_init();
     return server();
 }
