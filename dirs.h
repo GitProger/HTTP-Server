@@ -1,6 +1,5 @@
 #ifndef __DIRS_H_INC
 #define __DIRS_H_INC
-#include <windows.h>
 
 typedef struct file_list {
     char **names;
