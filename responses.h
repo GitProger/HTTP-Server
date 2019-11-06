@@ -1,25 +1,39 @@
 #ifndef __RESPONSES_H_INC
 #define __RESPONSES_H_INC
 #include "makecontent.h"
-#include "dirs.h"
 ErrorPage(badRequest , "400 Bad Request"           );
 ErrorPage(authReq    , "401 Authorization Required");
 ErrorPage(forbidden  , "403 Forbidden"             );
 ErrorPage(notFound   , "404 Not Found"             );
 ErrorPage(Imateapot  , "418 I`m a teapot"          );
 ErrorPage(intServErr , "500 Internal Server Error" );
+#include "dirs.h"
 
 int do_GET(int, char *, char *, char *);
 int do_HEAD(int, char *, char *, char *);
 
 int CreateResponse(const char *method, char *uri, char *response) {
     int i, resplen = 0;
-    if (uri[0] == '/')
-        for (i = 0; i < strlen(uri); i++) /* remove '/' in file name beginnig */
-            uri[i] = uri[i + 1];
 
-    if (!stricmp(uri, ""))
-        uri = ServerConfig.index;
+    /* uri = root + uri */
+    char *buf = malloc(MAX_USER_INFO_LEN);
+    strcpy(buf, uri);
+    sprintf(uri, "%s%s", ServerConfig.root, buf);
+    free(buf);    
+    
+    /*if (uri[0] == '/')
+        for (i = 0; i < strlen(uri); i++)
+            uri[i] = uri[i + 1];
+    if (!strcmp(uri, "")
+        uri = ServerConfig.index;        
+    */
+    i = strlen(uri) - 1;
+    if (uri[i] == '/') uri[i] = 0;
+    
+    if (!stricmp(uri, ServerConfig.root)) {
+        strcat(uri, "/");
+        strcat(uri, ServerConfig.index);
+    }
     char MIME[128], gen[64];
     getMIME(uri, MIME);
     int sz = -1;
@@ -51,8 +65,21 @@ int CreateResponse(const char *method, char *uri, char *response) {
 }
             
 int do_GET(int sz, char *param, char *MIME, char *response) {
+    if (ServerConfig.security && strstr(param, "..")) {
+        forbidden(response);
+        return strlen(response);
+    }
     if (sz == -1) {
-        notFound(response);
+        if (!ServerConfig.filelist)
+            notFound(response);
+        else {
+            if (dir_exist(param)) {
+                char *p = list_page_m(param);
+                strcpy(response, p);
+                free(p);
+            } else
+                notFound(response);
+        }
         return strlen(response);
     }
     int resplen = 0, i;
