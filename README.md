@@ -13,16 +13,16 @@ HTTP Server
     |--------------------|--------------------------------------|------------------|    
     |        ITEM        |              WHAT IS IT              |    SUPPORTING    |
     |--------------------|--------------------------------------|------------------|
-    | root               | root directory of site               |        NO        |
+    | root               | root directory of site               |        YES       |
     | index              | start page of site                   |        YES       |
     | server_ip          | IP-address of server                 |        YES       |
     | listen_port        | working port of site                 |        YES       |
     | log                | directory with logs                  |        YES       |
     | server_name        | name of site                         |    DECORATION    |
     | heap_mb            | size of server`s heap (in megabytes) |        YES       |
-    | sendfilelist       | if 'on' server sends list of files   |        NO        |
+    | sendfilelist       | if 'on' server sends list of files   |       ~YES       |
     |                    |  if a request file hasn`t extension  |                  |
-    | security           | if 'on' all requests that includes   |        NO        |
+    | security           | if 'on' all requests that includes   |        YES       |
     |                    | '..' ignores                         |                  |
     | cgi                | cgi on/off (.cgi, .py .exe)          |        NO        |
     | pycgi              | path to python interpretor           |        NO        |
