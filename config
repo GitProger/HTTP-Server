@@ -8,10 +8,14 @@
 #                                                          #
 ############################################################
 
-# root              html
+root              .
 log               logs
 index             index.html
 server_ip         127.0.0.1
 listen_port       80
 heap_mb           32
-# server_name       www.firstsiteonthisserver.com
+server_name       www.firstsiteonthisserver.com
+cgi               off
+pycgi             .
+security          on
+sendfilelist      off
