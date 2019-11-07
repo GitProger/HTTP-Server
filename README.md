@@ -3,7 +3,8 @@ HTTP Server
     This server is based on WinApi (WinSocket), it supports HTTP 1.0
 ## Plans
    * CGI
-   * Python
+   * Python, Python3
+   * Perl
    * More return HTTP codes
    * Linux version
 ## Short manual
