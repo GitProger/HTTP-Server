@@ -25,7 +25,7 @@ HTTP Server
     | security           | if 'on' all requests that includes   |        YES       |
     |                    | '..' ignores                         |                  |
     | cgi                | cgi on/off (.cgi, .py .exe)          |        NO        |
-    | pycgi              | path to python interpretor           |        NO        |
+    | cgipath            | cgi-bin                              |        NO        |
     |--------------------|--------------------------------------|------------------|
 
 ### C code of the configuration:
@@ -40,5 +40,5 @@ HTTP Server
         bool security;     /* security */
         bool filelist;     /* sendfilelist */
         bool cgi;          /* cgi */
-        char *py;          /* pycgi */
+        char *path;        /* cgipath */
     };
