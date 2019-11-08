@@ -8,6 +8,7 @@ ErrorPage(notFound   , "404 Not Found"             );
 ErrorPage(Imateapot  , "418 I`m a teapot"          );
 ErrorPage(intServErr , "500 Internal Server Error" );
 #include "dirs.h"
+#include "cgi.h"
 
 int do_GET(int, char *, char *, char *);
 int do_HEAD(int, char *, char *, char *);
@@ -65,6 +66,22 @@ int CreateResponse(const char *method, char *uri, char *response) {
 }
             
 int do_GET(int sz, char *param, char *MIME, char *response) {
+    char *ext = FileExt(param);
+    if (((!stricmp(ext, "py") || !stricmp(ext, "pl")) || !stricmp(ext, "exe"))
+        && ServerConfig.cgi)
+    {
+        /* we are in 'html' dir namespace (see CreateResponse), so: */
+        param = strstr(param, "/") + 1;
+        char *mime = run_cgi(param, response);
+        char *buffer = calloc(strlen(response), 1);
+        strcpy(buffer, response);
+        MakeHeader(response, HTTP_VERSION, "200 OK", mime, strlen(buffer));
+        strcat(response, buffer);
+        free_sev_blcks(3, ext, buffer, mime);
+        return strlen(response);
+    }
+    free(ext);
+
     if (ServerConfig.security && strstr(param, "..")) {
         forbidden(response);
         return strlen(response);
