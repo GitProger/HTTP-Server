@@ -5,7 +5,6 @@ HTTP Server
    * CGI
    * Python, Python3
    * Perl
-   * More return HTTP codes
    * Linux version
 ## Short manual
     All parameters must have length less than 1024 symbols
@@ -43,6 +42,3 @@ HTTP Server
         bool cgi;          /* cgi */
         char *py;          /* pycgi */
     };
-    
-## References
- [Project site](http://)
