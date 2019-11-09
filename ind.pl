@@ -1,9 +1,11 @@
 #!C:\Perl\perl.exe
-
-use strict
-use warning
+use 5.01;
+use strict;
+use warning;
 
 sub main {
+     say "Content-type: text/html";
+     print "\n";
      say "<html>";
      say "    <head> <title> Perl here </title> </head>";
      say "    <body>";
