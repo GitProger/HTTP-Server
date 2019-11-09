@@ -2,9 +2,7 @@ HTTP Server
 ===========
     This server is based on WinApi (WinSocket), it supports HTTP 1.0
 ## Plans
-   * CGI
-   * Python, Python3
-   * Perl
+   * Mime explicit indication from CGI scripts/programs
    * Linux version
 ## Short manual
     All parameters must have length less than 1024 symbols
