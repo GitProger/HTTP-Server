@@ -44,7 +44,7 @@ static int init_config(struct __server_configuration_struct *s) {
 
 int ReadConfigFile() {
     /*** Initaliztion ***/
-    FILE *fconf = fopen("config", "r");
+    FILE *fconf = fopen("config.conf", "r");
     char *curSetting, *curOption;
     if (!fconf) {
         return 1;
