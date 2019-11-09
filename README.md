@@ -41,3 +41,11 @@ HTTP Server
         bool cgi;          /* cgi */
         char *path;        /* cgipath */
     };
+### CGI
+   server directory
+    |___  html
+    |___  cgi
+    |___  serv.exe
+    |___  cgi.exe
+    |___  config
+    All scripts must be in cgi dir, all queries are like 'href="/cgi/index.py"'
