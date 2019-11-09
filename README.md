@@ -2,6 +2,7 @@ HTTP Server
 ===========
     This server is based on WinApi (WinSocket), it supports HTTP 1.0
 ## Plans
+   * CGI parameters (/cgi/index.py **?key=abc%20text=lalala**)
    * Mime explicit indication from CGI scripts/programs
    * Linux version
 ## Short manual
