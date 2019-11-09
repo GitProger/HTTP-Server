@@ -37,7 +37,10 @@ void run(const char *name) {
     char *cmd = calloc(1024, 1);
 
     if (strcmp(ext, "py") && strcmp(ext, "pl")) {
-        system(name);
+        strcat(cmd, "call \"");
+        strcat(cmd, name);
+        strcat(cmd, "\"");
+        system(cmd);
     } else {
         FILE *sc = fopen(name, "r");
         fgets(inter, 1024, sc);
@@ -53,10 +56,10 @@ void run(const char *name) {
         strcat(cmd, "\" ");
         strcat(cmd, name);
         system(cmd);
-        free(inter);
-        free(cmd);
         fclose(sc);
     }
+    free(inter);
+    free(cmd);
     free(ext);
 }
 
