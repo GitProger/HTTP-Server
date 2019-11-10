@@ -29,24 +29,24 @@ HTTP Server
 
 ### C code of the configuration:
     struct __server_configuration_struct {
-        char ip[16];       /* server_ip */
-        char port[6];      /* listen_port */
-        char *name;        /* server_name */
-        char *index;       /* index */
-        char *log;         /* log */
-        char *root;        /* root */
-        int  heap_sz_mb;   /* heap_mb */
-        bool security;     /* security */
+        char ip[16];       /* server_ip    */
+        char port[6];      /* listen_port  */
+        char *name;        /* server_name  */
+        char *index;       /* index        */
+        char *log;         /* log          */
+        char *root;        /* root         */
+        int  heap_sz_mb;   /* heap_mb      */
+        bool security;     /* security     */
         bool filelist;     /* sendfilelist */
-        bool cgi;          /* cgi */
-        char *path;        /* cgipath */
+        bool cgi;          /* cgi          */
+        char *path;        /* cgipath      */
     };
 ### CGI
     server directory
-       |____  html
-       |____  cgi
+       |____  html  (root)
+       |____  cgi   (path)
        |____  serv.exe
        |____  cgi.exe
-       |____  config
+       |____  config.conf
      
      All scripts must be in cgi dir, all queries are like 'href="/cgi/index.py"'
