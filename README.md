@@ -19,12 +19,12 @@ HTTP Server
     | log                | directory with logs                  |        YES       |
     | server_name        | name of site                         |    DECORATION    |
     | heap_mb            | size of server`s heap (in megabytes) |        YES       |
-    | sendfilelist       | if 'on' server sends list of files   |       ~YES       |
+    | sendfilelist       | if 'on' server sends list of files   |        YES       |
     |                    |  if a request file hasn`t extension  |                  |
     | security           | if 'on' all requests that includes   |        YES       |
     |                    | '..' ignores                         |                  |
-    | cgi                | cgi on/off (.cgi, .py .exe)          |        NO        |
-    | cgipath            | cgi-bin                              |        NO        |
+    | cgi                | cgi on/off (.pl, .py .exe)           |        YES       |
+    | cgipath            | cgi-bin                              |        YES       |
     |--------------------|--------------------------------------|------------------|
 
 ### C code of the configuration:
