@@ -32,15 +32,6 @@ static int lasterr();
         #define SOCKADDR struct sockaddr
         #define SOCKET_ERROR -1
         #define closesocket close
-        static int cleanup() {
-            return 0;
-        }
-        static int lasterr() {
-            return (unsigned short)0xFFFF;
-        }
-        static int cleanup() {
-            return 0;
-        }
         #include <errno.h>
         #include <sys/types.h>
         #include <sys/socket.h>
@@ -48,6 +39,15 @@ static int lasterr();
         #include <arpa/inet.h>
         #include <netdb.h>
         #include <unistd.h>
+        static int cleanup() {
+            return 0;
+        }
+        static int lasterr() {
+            return errno;
+        }
+        static int cleanup() {
+            return 0;
+        }
     #else
         #error "Sorry, no version for your OS."
     #endif
