@@ -10,7 +10,7 @@ static int lasterr();
  *   ... WSAGetLastError()
  *   ... WSACleanup()
  */
-#if defined(__MINGW32__) || defined(__WIN32__)
+#if defined(__MINGW32__) || defined(__WIN32__) || defined(WIN32)
     #include <winsock2.h>
     #include <ws2tcpip.h>
     #include <windows.h>
@@ -23,7 +23,7 @@ static int lasterr();
     static int lasterr()
         { return WSAGetLastError(); }
 #else
-    #ifdef __linux__
+    #if defined(__linux__) || defined(__linux)
         typedef unsigned char BYTE;
         #define MAKEWORD(a,b) \
             (((long)a & 0xFF) << 8) | (long)(b & 0xFF);
