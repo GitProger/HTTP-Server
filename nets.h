@@ -10,7 +10,7 @@ static int lasterr();
  *   ... WSAGetLastError()
  *   ... WSACleanup()
  */
-#ifdef __MINGW32__
+#if defined(__MINGW32__) || defined(__WIN32__)
     #include <winsock2.h>
     #include <ws2tcpip.h>
     #include <windows.h>
@@ -53,4 +53,4 @@ static int lasterr();
     #endif
 #endif
 
-#endif
+#endif /* nets.h */
