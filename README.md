@@ -2,8 +2,10 @@ HTTP Server
 ===========
     This server is based on WinApi (WinSocket), it supports HTTP 1.0
 ## Plans
-   * CGI parameters (/cgi/index.py **?key=abc%20text=lalala**)
+   * CGI parameters (/cgi/index.py\\**?key=abc%20text=lalala**)
    * Mime explicit indication from CGI scripts/programs
+   * More return codes
+   * POST method
    * Linux version
 ## Short manual
     All parameters must have length less than 1024 symbols
